@@ -37,13 +37,13 @@ const ShoppingHome = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const slides = [banner1, banner2];
-  const categories = [
-    { id: "men", label: "Men", icon: Shirt },
-    { id: "women", label: "Women", icon: CloudLightning },
-    { id: "kids", label: "Kids", icon: Baby },
-    { id: "accessories", label: "Accessories", icon: Watch },
-    { id: "footwear", label: "Footwear", icon: Umbrella },
-  ];
+  // const categories = [
+  //   { id: "men", label: "Men", icon: Shirt },
+  //   { id: "women", label: "Women", icon: CloudLightning },
+  //   { id: "kids", label: "Kids", icon: Baby },
+  //   { id: "accessories", label: "Accessories", icon: Watch },
+  //   { id: "footwear", label: "Footwear", icon: Umbrella },
+  // ];
   const brandWithIcon = [
     { id: "nike", label: "Nike", icon: Footprints },
     { id: "adidas", label: "Adidas", icon: Footprints },

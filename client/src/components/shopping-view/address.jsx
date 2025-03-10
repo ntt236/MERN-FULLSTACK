@@ -20,7 +20,7 @@ const initialAddressFormData = {
   notes: "",
 };
 
-function Address({ setCurrentSelectedAddress, selectedId }) {
+const Address = ({ setCurrentSelectedAddress, selectedId }) => {
   const [formData, setFormData] = useState(initialAddressFormData);
   const [currentEditedId, setCurrentEditedId] = useState(null);
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ function Address({ setCurrentSelectedAddress, selectedId }) {
   const { addressList } = useSelector((state) => state.shopAddress);
   const { toast } = useToast();
 
-  function handleManageAddress(event) {
+  const handleManageAddress = (event) => {
     event.preventDefault();
 
     if (addressList.length >= 3 && currentEditedId === null) {
@@ -72,9 +72,9 @@ function Address({ setCurrentSelectedAddress, selectedId }) {
             });
           }
         });
-  }
+  };
 
-  function handleDeleteAddress(getCurrentAddress) {
+  const handleDeleteAddress = (getCurrentAddress) => {
     dispatch(
       deleteAddress({ userId: user?.id, addressId: getCurrentAddress._id })
     ).then((data) => {
@@ -85,9 +85,9 @@ function Address({ setCurrentSelectedAddress, selectedId }) {
         });
       }
     });
-  }
+  };
 
-  function handleEditAddress(getCuurentAddress) {
+  const handleEditAddress = (getCuurentAddress) => {
     setCurrentEditedId(getCuurentAddress?._id);
     setFormData({
       ...formData,
@@ -97,13 +97,13 @@ function Address({ setCurrentSelectedAddress, selectedId }) {
       pincode: getCuurentAddress?.pincode,
       notes: getCuurentAddress?.notes,
     });
-  }
+  };
 
-  function isFormValid() {
+  const isFormValid = () => {
     return Object.keys(formData)
       .map((key) => formData[key].trim() !== "")
       .every((item) => item);
-  }
+  };
 
   useEffect(() => {
     dispatch(fetchAllAddresses(user?.id));
@@ -143,6 +143,6 @@ function Address({ setCurrentSelectedAddress, selectedId }) {
       </CardContent>
     </Card>
   );
-}
+};
 
 export default Address;

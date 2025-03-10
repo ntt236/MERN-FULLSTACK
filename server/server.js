@@ -12,9 +12,12 @@ const shopAddressRouter = require('./routes/shop/addres-routes')
 const shopOrderRouter = require('./routes/shop/order-routes')
 // create a database connection => u can alse
 // create a separate file fore this and then import/use that file here 
+require('dotenv').config();
 
-mongoose.connect('mongodb+srv://nguyenthanhtrieu236:nguyentrieu2306@cluster0.vt8wt.mongodb.net/').then(() => console.log('MongoDB connected')).catch((error) => console.log(error));
-
+mongoose
+    .connect(process.env.MONGO_URI)
+    .then(() => console.log('MongoDB connected'))
+    .catch((error) => console.log(error));
 
 
 const app = express()

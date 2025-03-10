@@ -68,7 +68,7 @@ const loginUser = async (req, res) => {
             userName: checkUser.userName
 
 
-        }, 'CLIENT_SECRET_KEY', { expiresIn: '1h' });
+        }, 'CLIENT_SECRET_KEY', { expiresIn: '60m' });
 
 
         // gửi token về cookie xong đến phần xử lý của redux 

@@ -1,11 +1,12 @@
 const cloudinary = require('cloudinary').v2;
-
+require('dotenv').config();
 const multer = require('multer');
 
+
 cloudinary.config({
-    cloud_name: "dqtre0ccw",
-    api_key: '458262847542578',
-    api_secret: "tP7Zo1fHIFHA0EdbRNRjmYpysxY"
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
 const storage = new multer.memoryStorage()

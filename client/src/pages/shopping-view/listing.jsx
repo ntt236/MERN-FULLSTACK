@@ -45,10 +45,11 @@ const ShoppingListing = () => {
 
   // Hàm xử lý lọc sản phẩm
   function handleFilter(getSectionId, getCurrentOption) {
-    let cpyFilters = { ...filter };
+    let cpyFilters = { ...filter }; // Sao chép trạng thái filter hiện tại
     const indexOfCurrentSection = Object.keys(cpyFilters).indexOf(getSectionId);
 
     if (indexOfCurrentSection === -1) {
+      // Nếu không tồn tại section trong filter, thêm section mới
       cpyFilters = {
         ...cpyFilters,
         [getSectionId]: [getCurrentOption],
@@ -59,6 +60,7 @@ const ShoppingListing = () => {
 
       if (indexOfCurrentOption === -1)
         cpyFilters[getSectionId].push(getCurrentOption);
+      // Nếu tùy chọn đã tồn tại, xóa nó khỏi danh sách
       else cpyFilters[getSectionId].splice(indexOfCurrentOption, 1);
     }
 
@@ -89,6 +91,12 @@ const ShoppingListing = () => {
     // làm như này để tránh trường hợp khi qua lại các page thì nó chạy useeffect lấy productDetails ra
     //  và làm cho bảng hiện lên
   };
+  // làm như trên thay vì để useeffect chỗ nàynày
+  // useEffect(() => {
+  //   if (productDetails !== null) {
+  //     setOpenDetails(true);
+  //   }
+  // }, [productDetails]);
 
   //hàm thêm sản phẩm
   const handleAddToCart = (getCurrentProductId) => {
@@ -129,12 +137,6 @@ const ShoppingListing = () => {
       setSearchParams(new URLSearchParams(createQueryString));
     }
   }, [filter]);
-
-  // useEffect(() => {
-  //   if (productDetails !== null) {
-  //     setOpenDetails(true);
-  //   }
-  // }, [productDetails]);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] gap-5 p-4 md:p-6">

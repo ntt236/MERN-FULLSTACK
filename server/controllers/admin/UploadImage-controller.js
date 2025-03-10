@@ -156,7 +156,7 @@ const deleteProduct = async (req, res) => {
         })
 
     } catch (error) {
-        console.log("��� ~ deleteProduct ~ error:", error)
+        console.log(error)
         res.status(500).json({
             success: false,
             message: "Không thể xóa sản phẩm"
